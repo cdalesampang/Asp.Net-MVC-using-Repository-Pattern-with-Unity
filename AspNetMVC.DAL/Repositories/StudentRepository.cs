@@ -18,14 +18,8 @@ namespace AspNetMVC.DAL.Repositories
 
         public int Create(Student entity)
         {
+            entity.DateCreated = DateTime.Now;
             dbContext.Students.Add(entity);
-
-            return dbContext.SaveChanges();
-        }
-
-        public int Delete(Student entity)
-        {
-            dbContext.Students.Remove(entity);
 
             return dbContext.SaveChanges();
         }

@@ -54,7 +54,12 @@ namespace AspNetMVC.Web.Controllers
             }
         }
 
-     
+        public ActionResult Students(int id, int page = 1)
+        {
+            var students = courseService.GetAllStudent(id);
+
+            return View(students.ToPagedList(page,pageSize));
+        }
 
 
     }

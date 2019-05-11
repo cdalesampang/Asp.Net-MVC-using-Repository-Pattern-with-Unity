@@ -3,15 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="row">
-    <div class="col-md-12">
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Students
             </div>
             <div class="panel-body ">
                 <div class="mb-1 clearfix">
-                    <a class="btn btn-primary pull-right" data-toggle="modal" href="#addModal">Add Student</a>
+                    @Html.ActionLink("Add Student", "Add", null, new { @class="btn btn-primary pull-right" })
                 </div>
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -22,7 +21,6 @@
                             <th>Course</th>
                             <th>Address</th>
                             <th>Phone Number</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,7 +38,6 @@
                             </td>
                             <td>@item.Address</td>
                             <td>@item.PhoneNumber</td>
-                            <td>Actions Here</td>
                         </tr>
                         }
                     </tbody>
@@ -52,6 +49,3 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>
-

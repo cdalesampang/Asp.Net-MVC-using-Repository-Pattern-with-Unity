@@ -25,13 +25,6 @@ namespace AspNetMVC.DAL.Repositories
             return dbContext.SaveChanges();
         }
 
-        public int Delete(Course entity)
-        {
-            dbContext.Courses.Remove(entity);
-
-            return dbContext.SaveChanges();
-        }
-
         public IQueryable<Course> GetAll()
         {
             return dbContext.Courses.AsQueryable();

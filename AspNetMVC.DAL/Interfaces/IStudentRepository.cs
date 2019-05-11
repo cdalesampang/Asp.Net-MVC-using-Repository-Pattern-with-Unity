@@ -10,7 +10,6 @@ namespace AspNetMVC.DAL.Interfaces
     public interface IStudentRepository
     {
         int Create(Student entity);
-        int Delete(Student entity);
         IQueryable<Student> GetAll();
         Student GetById(int id);
     }

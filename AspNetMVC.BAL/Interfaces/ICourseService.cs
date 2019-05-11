@@ -10,8 +10,8 @@ namespace AspNetMVC.BAL.Interfaces
     public interface ICourseService 
     {
         bool Create(string code, string description);
-        bool Delete(int id);
         IEnumerable<Course> GetAll();
+        IEnumerable<Student> GetAllStudent(int courseId);
         IEnumerable<Course> GetAll(int pageSize, int pageNumber = 1);
         Course GetById(int id);
     }

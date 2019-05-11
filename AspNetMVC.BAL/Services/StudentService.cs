@@ -12,22 +12,24 @@ namespace AspNetMVC.BAL.Services
     public class StudentService : IStudentService
     {
         private IStudentRepository studentRepository;
-        public StudentService(IStudentRepository studentRepository)
+        private IStudentCourseRepository studentCourseRepository;
+        public StudentService(IStudentRepository studentRepository,
+             IStudentCourseRepository studentCourseRepository)
         {
             this.studentRepository = studentRepository;
+            this.studentCourseRepository = studentCourseRepository;
         }
 
-        public bool Create(Student entity)
+        public bool Create(Student entity, IEnumerable<string> courses)
         {
-            return studentRepository.Create(entity) > 0 ? true : false;
-        }
-
-        public bool Delete(int id)
-        {
-            var entity = studentRepository.GetById(id);
-            if (entity != null)
-                return studentRepository.Delete(entity) > 0 ? true : false;
-
+            if (studentRepository.Create(entity) > 0)
+            {
+                foreach (var item in courses)
+                {
+                    this.studentCourseRepository.Create(Convert.ToInt32(item), entity.Id);
+                }
+                return true;
+            }
             return false;
         }
 

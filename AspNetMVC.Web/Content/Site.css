@@ -36,3 +36,6 @@
 ul.pagination {
     margin: 0px;
 }
+select[multiple], select[size] {
+    height: 100px;
+}

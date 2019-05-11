@@ -3,8 +3,7 @@
 @{
     ViewBag.Title = "Course";
 }
-<div class="row">
-    <div class="col-md-12">
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Courses
@@ -19,7 +18,7 @@
                             <th>Id</th>
                             <th>Code</th>
                             <th>Description</th>
-                            <th>Actions</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,7 +28,7 @@
                                 <td>@item.Id</td>
                                 <td>@item.Code</td>
                                 <td>@item.Description</td>
-                                <td>Action Here</td>
+                                <td class="text-center"><a href="/Course/Students/@item.Id" class="btn btn-sm btn-primary">View Students</a></td>
                             </tr>
                         }
                     </tbody>
@@ -41,8 +40,6 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>
 <!--Add Modal-->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">

@@ -12,9 +12,12 @@ namespace AspNetMVC.BAL.Services
     public class CourseService : ICourseService
     {
         private ICourseRepository courseRepository;
-        public CourseService(ICourseRepository courseRepository)
+        private IStudentCourseRepository studentCourseRepository;
+        public CourseService(ICourseRepository courseRepository,
+            IStudentCourseRepository studentCourseRepository)
         {
             this.courseRepository = courseRepository;
+            this.studentCourseRepository = studentCourseRepository;
         }
 
         public bool Create(string code, string description)
@@ -28,16 +31,6 @@ namespace AspNetMVC.BAL.Services
             return courseRepository.Create(entity) > 0 ? true : false;
         }
 
-        public bool Delete(int id)
-        {
-            var entity = courseRepository.GetById(id);
-            if (entity != null)
-                return courseRepository.Delete(entity) > 0 ? true : false;
-
-            return false;
-
-        }
-
         public IEnumerable<Course> GetAll()
         {
             return courseRepository.GetAll().ToList();
@@ -46,6 +39,11 @@ namespace AspNetMVC.BAL.Services
         public IEnumerable<Course> GetAll(int pageSize, int pageNumber = 1)
         {
             return courseRepository.GetAll().Skip(pageNumber-1).Take(pageSize).ToList();
+        }
+
+        public IEnumerable<Student> GetAllStudent(int courseId)
+        {
+            return studentCourseRepository.GetAllByCourseId(courseId).ToList();
         }
 
         public Course GetById(int id)

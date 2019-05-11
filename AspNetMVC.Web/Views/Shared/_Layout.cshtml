@@ -28,7 +28,12 @@
     </div>
     <div class="container body-content">
         @Html.Raw(TempData["msg"])
-        @RenderBody()
+        <div class="row">
+            <div class="col-md-12">
+                @RenderBody()
+            </div>
+        </div>
+
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - <a href="https://github.com/cdalesampang" target="_blank">cdalesampang</a></p>

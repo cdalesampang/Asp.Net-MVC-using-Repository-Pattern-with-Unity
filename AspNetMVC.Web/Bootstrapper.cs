@@ -34,6 +34,8 @@ namespace AspNetMVC.Web
 
             container.RegisterType<IStudentRepository, StudentRepository>();
             container.RegisterType<IStudentService, StudentService>();
+
+            container.RegisterType<IStudentCourseRepository, StudentCourseRepository>();
             RegisterTypes(container);
 
             return container;
